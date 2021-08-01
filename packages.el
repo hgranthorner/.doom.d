@@ -51,3 +51,4 @@
 
 (package! string-inflection)
 (package! prodigy)
+(package! browse-kill-ring)

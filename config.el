@@ -15,11 +15,6 @@
 (setq projectile-project-search-path '("~/repos/"))
 (setq projectile-switch-project-action 'projectile-dired)
 
-;; keybind to disable search highlighting (like :set noh)
-(map! :leader
-      :desc "Clear search highlight"
-      "s c"
-      #'evil-ex-nohighlight)
 
 (setq doom-theme 'doom-one)
 
@@ -73,9 +68,23 @@
   (global-unset-key (kbd "C-c s"))
   (global-set-key (kbd "C-c s") 'my-string-inflection-cycle-auto))
 
+
+(use-package! browse-kill-ring
+  :config
+  (map! :leader
+        :desc "View kill ring"
+        "k"
+        #'browse-kill-ring))
+
 (prodigy-define-service
   :name "GraphQl"
   :command "yarn dev"
   :cwd "~/repos/graphql-server"
   :stop-signal 'sigkill
   :kill-process-buffer-on-stop t)
+
+;; keybind to disable search highlighting (like :set noh)
+(map! :leader
+      :desc "Clear search highlight"
+      "s c"
+      #'evil-ex-nohighlight)
