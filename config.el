@@ -76,12 +76,19 @@
         "k"
         #'browse-kill-ring))
 
-(prodigy-define-service
-  :name "GraphQl"
-  :command "yarn dev"
-  :cwd "~/repos/graphql-server"
-  :stop-signal 'sigkill
-  :kill-process-buffer-on-stop t)
+(use-package! web-mode
+  :init
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-block-padding 2
+        web-mode-comment-style 2
+
+        web-mode-enable-css-colorization t
+        web-mode-enable-auto-pairing t
+        web-mode-enable-comment-keywords t
+        web-mode-enable-current-element-highlight t
+        web-mode-enable-auto-indentation nil))
 
 ;; keybind to disable search highlighting (like :set noh)
 (map! :leader
