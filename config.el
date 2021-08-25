@@ -43,6 +43,18 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(defvar doom-user-map (make-sparse-keymap)
+  "Key map for user shortcuts.")
+
+(map! :leader
+      :desc "user"
+      ","
+      doom-user-map)
+
+(add-hook! 'org-mode-hook #'+org-init-keybinds-h)
+(setq evil-snipe-override-evil-repeat-keys nil)
+(setq doom-localleader-key ",")
+(setq doom-localleader-alt-key "M-,")
 
 ;; String Inflection
 (defun my-string-inflection-cycle-auto ()
@@ -65,15 +77,16 @@
 (use-package! string-inflection
   :defer 1
   :config
-  (global-unset-key (kbd "C-c s"))
-  (global-set-key (kbd "C-c s") 'my-string-inflection-cycle-auto))
-
+  (map! :leader
+        :desc "String inflection"
+        ", s"
+        #'my-string-inflection-cycle-auto))
 
 (use-package! browse-kill-ring
   :config
   (map! :leader
         :desc "View kill ring"
-        "k"
+        ", k"
         #'browse-kill-ring))
 
 (use-package! web-mode
@@ -83,7 +96,6 @@
         web-mode-code-indent-offset 2
         web-mode-block-padding 2
         web-mode-comment-style 2
-
         web-mode-enable-css-colorization t
         web-mode-enable-auto-pairing t
         web-mode-enable-comment-keywords t
@@ -96,4 +108,9 @@
       "s c"
       #'evil-ex-nohighlight)
 
-(setq evil-move-beyond-eol t)
+(use-package! evil
+  :config
+  (setq evil-move-beyond-eol t
+        evil-insert-state-cursor '(box "#98BE65")
+        evil-visual-state-cursor '(box "orange")
+        evil-emacs-state-cursor  '(box "purple")))
