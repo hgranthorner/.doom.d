@@ -95,3 +95,5 @@
       :desc "Clear search highlight"
       "s c"
       #'evil-ex-nohighlight)
+
+(setq evil-move-beyond-eol t)
