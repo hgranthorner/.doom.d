@@ -114,3 +114,5 @@
         evil-insert-state-cursor '(box "#98BE65")
         evil-visual-state-cursor '(box "orange")
         evil-emacs-state-cursor  '(box "purple")))
+
+(setq lsp-eldoc-enable-hover nil)
