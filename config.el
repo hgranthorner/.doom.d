@@ -55,6 +55,7 @@
 (setq evil-snipe-override-evil-repeat-keys nil)
 (setq doom-localleader-key ",")
 (setq doom-localleader-alt-key "M-,")
+(setq python-shell-interpreter "python3")
 
 ;; String Inflection
 (defun my-string-inflection-cycle-auto ()
