@@ -109,6 +109,11 @@
       "s c"
       #'evil-ex-nohighlight)
 
+(map! :leader
+      :desc "Repeat"
+      "."
+      #'repeat)
+
 (use-package! evil
   :config
   (setq evil-move-beyond-eol t
