@@ -93,6 +93,8 @@
 (use-package! web-mode
   :init
   (setq web-mode-markup-indent-offset 2
+        web-mode-attr-indent-offset 2
+        web-mode-attr-value-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2
         web-mode-block-padding 2
