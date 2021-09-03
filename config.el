@@ -114,6 +114,11 @@
       "."
       #'repeat)
 
+(map! :leader
+      :desc "List processes"
+      ", l"
+      #'list-processes)
+
 (use-package! evil
   :config
   (setq evil-move-beyond-eol t
@@ -122,3 +127,4 @@
         evil-emacs-state-cursor  '(box "purple")))
 
 (setq lsp-eldoc-enable-hover nil)
+(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-dired)
