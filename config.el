@@ -9,10 +9,10 @@
 (setq user-full-name "Grant Horner"
       user-mail-address "h.grant.horner@gmail.com")
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
-(setq doom-font (font-spec :family "monospace" :size 18))
+(setq doom-font (font-spec :family "monospace" :size 17))
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
-(setq projectile-project-search-path '("~/repos/"))
+(setq projectile-project-search-path '("~/Dev/"))
 (setq projectile-switch-project-action 'projectile-dired)
 
 
@@ -120,6 +120,15 @@
       :desc "List processes"
       ", l"
       #'list-processes)
+
+(map! :localleader
+      :map (clojure-mode-map
+            lisp-mode-map
+            emacs-lisp-mode-map)
+      "s f" #'paredit-forward-slurp-sexp
+      "s b" #'paredit-backward-slurp-sexp
+      "b f" #'paredit-forward-barf-sexp
+      "b b" #'paredit-backward-barf-sexp)
 
 (use-package! evil
   :config
