@@ -83,13 +83,6 @@
         ", s"
         #'my-string-inflection-cycle-auto))
 
-(use-package! browse-kill-ring
-  :config
-  (map! :leader
-        :desc "View kill ring"
-        ", k"
-        #'browse-kill-ring))
-
 (use-package! web-mode
   :init
   (setq web-mode-markup-indent-offset 2
@@ -137,5 +130,36 @@
         evil-visual-state-cursor '(box "orange")
         evil-emacs-state-cursor  '(box "purple")))
 
+;; Lots of useful helm tips here: https://tuhdo.github.io/helm-intro.html
+(use-package! helm
+  :init
+  (setq helm-split-window-inside-p  t
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match    t
+        helm-semantic-fuzzy-match   t
+        helm-imenu-fuzzy-match      t)
+  :config
+  (map! :leader
+        :desc "View kill ring"
+        ", k"
+        #'helm-show-kill-ring))
+
+(use-package! swiper-helm
+  :init
+  (setq helm-split-window-inside-p t)
+  :config
+  (map! :leader
+        :desc "Helm swiper"
+        "s s"
+        #'swiper-helm))
+
 (setq lsp-eldoc-enable-hover nil)
 (setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-dired)
+
+(when (and (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (progn
+    (setq native-comp-async-report-warnings-errors nil)
+    (setq comp-deferred-compilation t)
+    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+    (setq package-native-compile t)))
