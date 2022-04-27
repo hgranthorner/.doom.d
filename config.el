@@ -79,6 +79,11 @@
 (setq doom-localleader-key ",")
 (setq doom-localleader-alt-key "M-,")
 
+(when IS-MAC
+  (evil-select-search-module 'evil-search-module 'isearch))
+
+(setq inferior-lisp-program "ros -L sbcl -Q -l ~/.sbclrc run")
+
 (map! (:map (emacs-lisp-mode-map clojure-mode-map clojurescript-mode-map)
        :localleader
        (:prefix ("s" . "slurp")
@@ -91,8 +96,3 @@
        :localleader
        (:prefix "e"
         :desc "Evaluate defun" "d" #'sly-eval-defun)))
-
-(when IS-MAC
-  (evil-select-search-module 'evil-search-module 'isearch))
-
-(setq inferior-lisp-program "ros -L sbcl -Q -l ~/.sbclrc run")
