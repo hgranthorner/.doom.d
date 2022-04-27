@@ -79,14 +79,20 @@
 (setq doom-localleader-key ",")
 (setq doom-localleader-alt-key "M-,")
 
-(map! :map (emacs-lisp-mode-map clojure-mode-map clojurescript-mode-map)
-      :localleader
-      (:prefix ("s" . "slurp")
-       :desc "Slurp forward"  "f" #'paredit-forward-slurp-sexp
-       :desc "Slurp backward" "b" #'paredit-backward-slurp-sexp)
-      (:prefix ("b" . "barf")
-       :desc "Barf forward" "f" #'paredit-forward-barf-sexp
-       :desc "Barf forward" "b" #'paredit-backward-barf-sexp))
+(map! (:map (emacs-lisp-mode-map clojure-mode-map clojurescript-mode-map)
+       :localleader
+       (:prefix ("s" . "slurp")
+        :desc "Slurp forward"  "f" #'paredit-forward-slurp-sexp
+        :desc "Slurp backward" "b" #'paredit-backward-slurp-sexp)
+       (:prefix ("b" . "barf")
+        :desc "Barf forward" "f" #'paredit-forward-barf-sexp
+        :desc "Barf forward" "b" #'paredit-backward-barf-sexp))
+      (:map (lisp-mode-map)
+       :localleader
+       (:prefix "e"
+        :desc "Evaluate defun" "d" #'sly-eval-defun)))
 
 (when IS-MAC
   (evil-select-search-module 'evil-search-module 'isearch))
+
+(setq inferior-lisp-program "ros -L sbcl -Q -l ~/.sbclrc run")
