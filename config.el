@@ -75,6 +75,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(exec-path-from-shell-initialize)
 (setq evil-snipe-override-evil-repeat-keys nil)
 (setq doom-localleader-key ",")
 (setq doom-localleader-alt-key "M-,")
